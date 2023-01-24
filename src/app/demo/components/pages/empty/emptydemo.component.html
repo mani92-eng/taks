@@ -1,0 +1,43 @@
+<div class="grid">
+    <div class="col-12">
+
+		<div class="search-container" style="float: right;">
+			<input type="text" pInputText placeholder="Search.." [(ngModel)]="searchText" (keyup.enter)="search()">
+		</div>
+        <div class="card">
+    <h5 class="card-title">Resize</h5>
+
+        <div class="table-container">
+                <p-table [value]="customers3" scrollDirection="both" sortMode="multiple" [resizableColumns]="true" columnResizeMode="expand" [scrollable]="true" scrollHeight="400px" styleClass="mt-3" responsiveLayout="scroll">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th pResizableColumn pSortableColumn="name" style="width:200px"><p-sortIcon field="name"></p-sortIcon>Name</th>
+                            <th pResizableColumn pSortableColumn="id" style="width:200px">Id<p-sortIcon field="id"></p-sortIcon></th>
+        
+						<th pResizableColumn pSortableColumn="date" style="width:200px">
+							Date <p-sortIcon field="date"></p-sortIcon>
+						</th>
+						<th pResizableColumn pSortableColumn="representative.name" style="width:200px">
+							<p-sortIcon field="representative.name"></p-sortIcon>Representative
+						</th>
+						<th pResizableColumn pSortableColumn="balance" style="width:200px" pFrozenColumn alignFrozen="right">
+							<p-sortIcon field="balance"></p-sortIcon>Balance
+						</th>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="body" let-customer>
+					<tr>
+						<td style="width:200px">{{customer.name}}</td>
+						<td style="width:200px">{{custom
+							<img [alt]="customer.representative.name" src="assets/demo/images/avatar/{{customer.representative.image}}" width="32" style="vertical-align: middle"/>
+							<span class="image-text ml-2">{{customer.representative.name}}</span>
+						</td>
+						<td style="width:200px" pFrozenColumn class="font-bold" alignFrozen="right">{{formatCurrency(customer.balance)}}</td>
+					</tr>
+				</ng-template>
+			</p-table>
+			</div>
+		</div>
+	</div>
+</div>
+
